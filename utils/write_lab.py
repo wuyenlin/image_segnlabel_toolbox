@@ -21,7 +21,7 @@ def write_label(seg_img_folder):
             print('0')
             continue
         elif cmd == 32: # space
-            txt_file.write("{}  \n".format(img_path))
+            txt_file.write("{}  x\n".format(img_path))
             print('Skipped.')
             continue
         elif cmd == 27: # ESC
@@ -30,8 +30,4 @@ def write_label(seg_img_folder):
 
     txt_file.close()
     print("Finished labelling all files in current folder.")
-    print("The txt file has been saved. Goodbye!")
-
-# if __name__ == '__main__':
-#     # example
-#     write_label('PATCHES/2020-06-05')
+    print("The txt file has been saved in LABELS/. Goodbye!")
