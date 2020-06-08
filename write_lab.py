@@ -1,6 +1,7 @@
 import os
 import cv2
 
+
 def write_label(seg_img_folder):
     
     date = seg_img_folder.split('/')[-1]
@@ -32,6 +33,5 @@ def write_label(seg_img_folder):
     print("Finished labelling all files in current folder.")
     print("The txt file has been saved. Goodbye!")
 
-# if __name__ == '__main__':
-#     # example
-#     write_label('PATCHES/2020-06-05')
+if __name__ == '__main__':
+    write_label('PATCHES/2020-06-05')
