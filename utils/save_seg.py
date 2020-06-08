@@ -7,7 +7,7 @@ def save_seg(target_img, model_name):
     if any((item == model_name) for item in os.listdir()):
         pts = pickle.load(open(model_name, 'rb'))    
     else:
-        print('No such model in the directory.')
+        print('No such model found in the directory.')
 
     dt, date = ckdir(target_img)
     img = cv2.imread(target_img)
@@ -17,9 +17,12 @@ def save_seg(target_img, model_name):
         x2 , y2 = int(pts[i][1][0]), int(pts[i][1][1])
         crop_img = img[y1:y2, x1:x2]
         img_name = dt + '_' + f"{i:03}" + '.jpg'
-        out_path = os.path.join('PATCHES', date, img_name)
+        out_path = r'{}'.format(os.path.join('PATCHES', date, img_name))
         is_written = cv2.imwrite(out_path, crop_img)
+        print(is_written)
         if is_written:
             print("Saved {}/{}".format(i, len(pts)-1))
+        else:
+            raise Exception("Could not write image.")
 
     print("All segmented images are saved to \n'PATCHES/{}'.".format(date))
