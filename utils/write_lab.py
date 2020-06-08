@@ -1,10 +1,11 @@
 import os
 
-def write_label(folder):
+def write_label(seg_img_folder, date):
+    
+    txt_path = 'LABELS/{}.txt'.format(date)
+    file = open(txt_path, 'a')
 
-    file = open('PATCHES', 'a')
-
-    for file in folder:
+    for jpg in seg_img_folder:
         img_path = os.path.join(folder, file) # check how to get filename
         img = cv2.imread(img_path)
 
@@ -23,10 +24,9 @@ def write_label(folder):
             print('Skipped.')
             continue
         elif cmd == 27: # ESC
-            print("Stopped.")
+            print('Stopped.')
             break
-    
 
     file.close()
     print("Finished labelling all files in current folder.")
-    print("Label .txt file has been saved. Goodbye!")
+    print("The txt file has been saved. Goodbye!")
