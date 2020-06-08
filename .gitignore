@@ -1,5 +1,6 @@
 PATCHES/
 LABELS/
+original/
 __pycache__/
 *.py[cod]
 *$py.class
