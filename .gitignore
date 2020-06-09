@@ -2,6 +2,7 @@ PATCHES/
 LABELS/
 original/
 __pycache__/
+utils/__pycache__/
 *.py[cod]
 *$py.class
 .python-version
