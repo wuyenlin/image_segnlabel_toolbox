@@ -17,7 +17,7 @@ Please note :
     b) the jpg files should be named in the format of `YYYY-MM-DD_hh.mm.jpg`.
 
 ### Functions
-By running the `main.py` function, 4 options will present where user can choose from one of the actions mentioned above.
+By running the `main.py` function, 3 options will present where user can choose from one of the actions mentioned above.
 
 
 ### Requirements

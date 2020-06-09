@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import cv2
-import pickle, os
-from utils.ck_directory import ckdir
+import os
 
 def save(dt, date, img, pts):
 
