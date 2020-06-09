@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from utils.seg import seg_model 
 from utils.save_seg import save_seg
 from utils.write_lab import write_label
