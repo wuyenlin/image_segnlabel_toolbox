@@ -3,6 +3,10 @@ import matplotlib.image as mpimg
 import numpy as np
 import pickle
 
+'''
+This function is not used.
+'''
+
 def seg_model(path, model_name):
 
     def tellme(s):

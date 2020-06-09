@@ -5,6 +5,9 @@ import pickle, os
 
 def seg_model(target_img, model_name):
 
+    if any((item == model_name) for item in os.listdir()):
+        raise Exception("Such file already exists!")
+
     def tellme(s):
         print(s)
         plt.title(s, fontsize=16)
@@ -26,19 +29,24 @@ def seg_model(target_img, model_name):
         pts = []
         while len(pts) < 2:
             pts = np.asarray(plt.ginput(2, timeout=-1))
-            # add if loop to check if it follows diagonal rule
             tellme('ok')
         crop_pts.append(pts)
-        # ph = plt.fill(pts[:, 0], pts[:, 1], 'r', lw=5)
+        
+        # visualize the cropped area with a red rectangle
+        p1, p2 = pts
+        pts = np.append(pts, np.array([p1[0],p2[1]]))
+        pts = np.append(pts, np.array([p2[0],p1[1]]))
+        x = [pts[0],pts[4],pts[2],pts[6]]
+        y = [pts[1],pts[5],pts[3],pts[7]]
+        ph = plt.fill(x, y, 'r', alpha = 0.7)
+        
         num += 1
-        tellme("Keyboard click to end; mouse click on figure to proceed to crop next car.")
+        tellme("Keyboard click to end. \nMouse click on figure to proceed to crop next car.")
         if plt.waitforbuttonpress():
             break
-        # for p in ph:
-        #     p.remove()
+        for p in ph:
+            p.remove()
 
     pickle.dump(crop_pts, open(model_name, 'wb'))
     print("You have selected {} points. That is {} images to crop.".format(num*2, num))
     print("The input coordinates are saved as {}.".format(model_name))
-
-    # add condition to check if mask exists
