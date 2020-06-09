@@ -21,7 +21,7 @@ def write_label(seg_img_folder):
             print('0')
             continue
         elif cmd == 32: # space
-            txt_file.write("{}  x\n".format(img_path))
+            txt_file.write("{} x\n".format(img_path))
             print('Skipped.')
             continue
         elif cmd == 27: # ESC

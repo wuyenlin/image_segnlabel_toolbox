@@ -29,13 +29,13 @@ def seg_model(target_img, model_name):
             # add if loop to check if it follows diagonal rule
             tellme('ok')
         crop_pts.append(pts)
-        ph = plt.fill(pts[:, 0], pts[:, 1], 'r', lw=5)
+        # ph = plt.fill(pts[:, 0], pts[:, 1], 'r', lw=5)
         num += 1
         tellme("Keyboard click to end; mouse click on figure to proceed to crop next car.")
         if plt.waitforbuttonpress():
             break
-        for p in ph:
-            p.remove()
+        # for p in ph:
+        #     p.remove()
 
     pickle.dump(crop_pts, open(model_name, 'wb'))
     print("You have selected {} points. That is {} images to crop.".format(num*2, num))
