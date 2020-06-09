@@ -3,18 +3,21 @@ from utils.save_seg import save_seg
 from utils.write_lab import write_label
 
 def main():
-    print("===========================================================")
+    print("===============================================================")
     print("==This is an image-segmentation tool developed by Yen-Lin Wu.==")
-    print("===========================================================")
+    print("===============================================================")
+    print("Please note : a) this toolbox only accepts files in jpg format.")
+    print("              b) the jpg files should be named in the format of 'YYYY-MM-DD_hh.mm.jpg'.\n")
+    print("Please choose a desired action:")
     print("1: When you have a new image to segment and you want to CREATE a segmentation MASK.")
     print("2: When you have a segmentation mask to use and you want to SAVE segmented images using that mask.")
     print("3: When you have segmented images and want to LABEL them.")
-    x = input("Please choose the desired action:")
+    x = input(":")
 
     if x == '1':
         print("Mode 1. Create new segementation mask.")
-        model_name = input("Decide the NAME your mask will be saved as: ") 
-        target_img = input("Give path to the image to be segmented: ")
+        model_name = input("Decide the NAME your mask will be saved as (e.g. mymask): ") 
+        target_img = input("Give path to the image to be segmented (e.g. path/to/image.jpg): ")
         print('The model will be saved as {}.'.format(model_name))
         seg_model(target_img, model_name)
 
@@ -25,7 +28,7 @@ def main():
         save_seg(target_img, model_name)
     
     elif x == '3':
-        print("Mode 3. Now you'll be manually LABELLING for the segmented images.")
+        print("Mode 3. Now you'll be manually LABELING for the segmented images.")
         seg_img_folder = input("Give path to Segmented image FOLDER: ")
         write_label(seg_img_folder)
 
