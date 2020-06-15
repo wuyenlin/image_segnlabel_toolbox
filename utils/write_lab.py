@@ -5,9 +5,11 @@ import cv2
 def write_label(seg_img_folder):
     date = seg_img_folder.split('/')[-1]
     txt_path = 'LABELS/{}.txt'.format(date)
-    txt_file_r = open(txt_path, 'r')
-    labeled = [line.split()[0] for line in txt_file_r.readlines()]
-    txt_file_r.close()
+    try:
+        with open(txt_path, 'r') as txt_file_r:
+            labeled = [line.split()[0] for line in txt_file_r.readlines()]
+    except FileNotFoundError:
+        labeled = []
     img_files = [os.path.join(seg_img_folder, filename) for filename in os.listdir(seg_img_folder)]
     files_to_label = [file for file in img_files if file not in labeled]
     print(f"{len(labeled)} labeled. {len(files_to_label)} to go.")
