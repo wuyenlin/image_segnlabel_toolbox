@@ -44,8 +44,6 @@ def seg_model(target_img, model_name):
         tellme("Keyboard click to end. \nMouse click on figure to proceed to crop next car.")
         if plt.waitforbuttonpress():
             break
-        for p in ph:
-            p.remove()
 
     pickle.dump(crop_pts, open(model_name, 'wb'))
     print("You have selected {} points. That is {} images to crop.".format(num*2, num))
